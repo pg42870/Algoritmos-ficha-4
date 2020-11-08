@@ -105,18 +105,20 @@ def traducao(seq):
 
 def valida(seq):
     """
-
     Parameters
     ----------
     seq : TYPE
-        DESCRIPTION.
-
+        Função que verifica se uma sequência de DNA é válida (devolve True ou False)
     Returns
     -------
-    None.
-
+    boolean(True/False)
     """
-    pass
+    seq = seq.upper()
+    true_seq = seq.count('A')+seq.count('T')+seq.count('C')+seq.count('G')
+    if len(seq)==true_seq:
+        return True
+    else:
+        return False
 
 def contar_bases(seq):
     """
