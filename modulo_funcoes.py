@@ -107,7 +107,7 @@ def valida(seq):
     """
     Parameters
     ----------
-    seq : TYPE
+    seq : str
         Função que verifica se uma sequência de DNA é válida (devolve True ou False)
     Returns
     -------
