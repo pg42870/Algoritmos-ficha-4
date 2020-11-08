@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
 Created on Fri Nov  6 16:49:28 2020
 
-@author: joana
+@author: Joana Gabriel, Maria Couto, Teresa Coimbra
 """
 
 #raise Exception(...)
@@ -63,15 +62,17 @@ def complemento_inverso(seq):
     """
     Parameters
     ----------
-    seq : TYPE
-        DESCRIPTION.
+    seq : str
+        sequência de DNA
 
     Returns
     -------
-    None.
+    seq2: str    
+        complemento inverso de uma sequência de DNA (seq)
 
     """
-    pass
+    seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
+    return seq2
 
 def transcricao(seq):
     """
