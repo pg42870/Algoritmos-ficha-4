@@ -32,7 +32,7 @@ FileHandle.close()
 
 import re
 
-FH = open("demofile.fasta","r")
+FH = open("variola.fasta","r")
 def ler_FASTA_seq(file):
     """
     Parameters
