@@ -30,19 +30,34 @@ def ler_seq(FileHandle):
 print(ler_seq(FileHandle))
 FileHandle.close()
 
-def ler_FASTA_seq(FileHandle):
+import re
+
+FH = open("demofile.fasta","r")
+def ler_FASTA_seq(file):
     """
     Parameters
     ----------
     FileHandle : _io.TextIOWrapper
-        Um ficheiro 
-
+        Um ficheiro fasta
     Returns
     -------
-    None.
-
+    seq:str 
+        sequência contida num ficheiro fasta sem o cabeçalho
     """
-    pass
+    linhas = FH.readlines()
+    seq = ''
+    
+    a = ''.join(linhas)
+    header = re.findall('>.+[\n]',a) # para obter o cabeçalho
+    header=''.join(header)
+    
+    for l in linhas:
+        if l != header:
+            seq+=l.replace('\n','')
+    return seq
+
+print(ler_FASTA_seq(FH))
+FH.close()
 
 def complemento_inverso(seq):
     """
