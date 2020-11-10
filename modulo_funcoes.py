@@ -134,7 +134,13 @@ def contar_bases(seq):
     None.
 
     """
-    pass
+    seq= seq.upper()
+    dici = {}
+    dici['A'] = seq.count('A')
+    dici['C'] = seq.count('C')
+    dici['G'] = seq.count('G')
+    dici['T'] = seq.count('T')
+    return dici
 
 def reading_frames(seq):
     """
@@ -150,7 +156,13 @@ def reading_frames(seq):
     None.
 
     """
-    pass
+    if valida(seq):
+       frames = []
+       for i in range(3):
+           frames.append(seq[i::])
+       for i in range(3):
+           frames.append(complemento_inverso(seq[i::]))
+    return frames
 
 def get_proteins(seq):
     """
@@ -165,5 +177,12 @@ def get_proteins(seq):
     None.
 
     """
-    pass
+    if valida(seq):
+       frames = reading_frames(seq)
+       proteins = []
+       for f in frames:
+           rna = transcricao(f)
+           p = traducao(rna)
+           proteins.append(p)
+    return proteins
 
