@@ -185,11 +185,16 @@ def get_proteins(seq):
     """
     
     if valida(seq):
-       frames = reading_frames(seq)
-       proteins = []
-       for f in frames:
-           rna = transcricao(f)
-           p = traducao(rna)
-           proteins.append(p)
+        frames = reading_frames(seq)
+        proteins = []
+        for f in frames:
+            p = traducao(f)
+            p = re.findall('M.*?_',p)
+            for i in p:
+                proteins.append(i)
+        proteins = set(proteins)
+        proteins = list(proteins)
+        proteins.sort()
+        proteins = sorted(proteins, key=len, reverse = True)
     return proteins
 
