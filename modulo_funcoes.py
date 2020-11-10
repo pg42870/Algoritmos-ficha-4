@@ -11,7 +11,7 @@ Created on Fri Nov  6 16:49:28 2020
 
 FileHandle = open("demofile.txt","r")
 def ler_seq(FileHandle):
-    """
+    """ Funcao que devolve a 
     Parameters
     ----------
     FileHandle : _io.TextIOWrapper
@@ -34,15 +34,17 @@ import re
 
 FH = open("variola.fasta","r")
 def ler_FASTA_seq(file):
-    """
+    """Funcao que devolve uma sequencia contida num ficheiro FASTA
+    
     Parameters
     ----------
     FileHandle : _io.TextIOWrapper
-        Um ficheiro fasta
+        Um ficheiro FASTA
+        
     Returns
     -------
-    seq:str 
-        sequência contida num ficheiro fasta sem o cabeçalho
+    seq : str 
+        Sequência contida num ficheiro FASTA sem o cabeçalho
     """
     
     linhas = FH.readlines()
@@ -61,7 +63,9 @@ print(ler_FASTA_seq(FH))
 FH.close()
 
 def complemento_inverso(seq):
-    """
+    """ Funcao que devolve o complemento inverso de uma sequencia de DNA
+    fornecida
+
     Parameters
     ----------
     seq : str
@@ -69,9 +73,8 @@ def complemento_inverso(seq):
 
     Returns
     -------
-    seq2: str    
+    seq2 : str    
         complemento inverso de uma sequência de DNA (seq)
-
     """
     
     seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
@@ -108,11 +111,13 @@ def traducao(seq):
     pass
 
 def valida(seq):
-    """
+    """ Funcao que verifica se a sequencia de DNA e valida (devolve True or False)
+    
     Parameters
     ----------
     seq : str
-        Função que verifica se uma sequência de DNA é válida (devolve True ou False)
+        Sequência de DNA que queremos saber se e valida
+        
     Returns
     -------
     boolean(True/False)
@@ -126,40 +131,42 @@ def valida(seq):
         return False
 
 def contar_bases(seq):
-    """
+    """Funcao que recebe uma sequencia de DNA e faz a contagem das suas bases
 
     Parameters
     ----------
-    seq : TYPE
-        DESCRIPTION.
+    seq : str
+        Sequencia de DNA da qual queremos contar as bases
 
     Returns
     -------
-    None.
-
+    dici : dict
+         Dicionario que contem como chave as bases azotadas da sequencia de DNA
+         e para cada chave apresenta o valor da contagem dessa base
     """
-    
-    seq= seq.upper()
-    dici = {}
-    dici['A'] = seq.count('A')
-    dici['C'] = seq.count('C')
-    dici['G'] = seq.count('G')
-    dici['T'] = seq.count('T')
+    if valida(seq):
+        seq= seq.upper()
+        dici = {}
+        dici['A'] = seq.count('A')
+        dici['C'] = seq.count('C')
+        dici['G'] = seq.count('G')
+        dici['T'] = seq.count('T')
     return dici
 
 def reading_frames(seq):
-    """
-    
+    """Funcao que devolve uma lista com as 3 reading frames da sequencia
+    de DNA fornecida, bem como as 3 do seu complemento inverso
 
     Parameters
     ----------
-    seq : TYPE
-        DESCRIPTION.
+    seq : str
+        Sequencia de DNA da qual queremos saber as reading frames
 
     Returns
     -------
-    None.
-
+    frames : list of str
+        As 3 reading frames da sequencia fornecida e as 3
+        do seu complemento inverso
     """
     
     if valida(seq):
@@ -170,18 +177,21 @@ def reading_frames(seq):
            frames.append(complemento_inverso(seq[i::]))
     return frames
 
-def get_proteins(seq):
-    """
 
+def get_proteins(seq):
+    """Funcao que devolve a lista ordenada das proteinas resultantes da traducao 
+    da sequencia de DNA fornecida
+    
     Parameters
     ----------
-    seq : TYPE
-        DESCRIPTION.
+    seq : str
+        Sequencia de DNA da qual queremos saber as proteinas resultantes
 
     Returns
     -------
-    None.
-
+    proteins: list of str
+        Proteinas resultantes da traducao da sequencia de DNA, ordenadas por 
+        tamanho e dentro do mesmo tamanho por ordem alfabetica
     """
     
     if valida(seq):
