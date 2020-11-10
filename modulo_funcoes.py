@@ -19,6 +19,7 @@ def ler_seq(FileHandle):
 
     Returns
     -------
+    
     seq : str
         sequencia de DNA que esta contida numa linha   
 
@@ -43,6 +44,7 @@ def ler_FASTA_seq(file):
     seq:str 
         sequência contida num ficheiro fasta sem o cabeçalho
     """
+    
     linhas = FH.readlines()
     seq = ''
     
@@ -71,6 +73,7 @@ def complemento_inverso(seq):
         complemento inverso de uma sequência de DNA (seq)
 
     """
+    
     seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
     return seq2
 
@@ -114,6 +117,7 @@ def valida(seq):
     -------
     boolean(True/False)
     """
+    
     seq = seq.upper()
     true_seq = seq.count('A')+seq.count('T')+seq.count('C')+seq.count('G')
     if len(seq)==true_seq:
@@ -134,6 +138,7 @@ def contar_bases(seq):
     None.
 
     """
+    
     seq= seq.upper()
     dici = {}
     dici['A'] = seq.count('A')
@@ -156,6 +161,7 @@ def reading_frames(seq):
     None.
 
     """
+    
     if valida(seq):
        frames = []
        for i in range(3):
@@ -177,6 +183,7 @@ def get_proteins(seq):
     None.
 
     """
+    
     if valida(seq):
        frames = reading_frames(seq)
        proteins = []
