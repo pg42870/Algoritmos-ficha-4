@@ -11,7 +11,7 @@ from modulo_funcoes import ler_seq, ler_FASTA_seq, complemento_inverso, transcri
 class Testes(unittest.TestCase):
     
     def testar_ler_seq(self):
-        self.asssertEqual('BRCA.txt', 'ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGAT')
+        self.asssertEqual(ler_seq('BRCA.txt'), 'ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGAT')
     
     def testar_ler_FASTA(self):
         self.assertEqual(ler_FASTA_seq('Homo_sapiens_BRCA.fasta'),'ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATATGCGAATTAAGAAGAAACAAAGGCAACGCGTCTTTCCACAGCCAGGCAGTCTGTATCTTGCAAAAACATCCACTCTGCCTCGAATCTCTCTGAAAGCAGCAGTAGGAGGCCAAGTTCCCTCTGCGTGTTCTCATAAACAG')
