@@ -45,6 +45,7 @@ class Testes(unittest.TestCase):
         self.assertEqual(transcricao('ACCAGAGCGG'), 'ACCAGAGCGG')
         self.assertEqual(transcricao('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA'), 'AUUUAAUUACAAGUCUUCAGAAUGCCAGAGAUAUACAGGAUCUAACCA')
         self.assertEqual(transcricao('TTTTTTTT'), 'UUUUUUUU') 
+        self.assertEqual(transcricao('tttttttt'), 'UUUUUUUU')
     
                          
     def testar_traducao(self):
@@ -64,6 +65,8 @@ class Testes(unittest.TestCase):
         self.assertFalse(valida('HSIDN'))
         self.assertFalse(valida('hyeod'))
         self.assertFalse(valida('ATGCTX'))
+        self.assertFalse(valida('ATGCT1'))
+        self.assertFalse(valida('ATG_AG'))
         self.assertFalse(valida('AUGCUA'))
         self.assertFalse(valida('15485'))
         self.assertTrue(valida('ATGC'))
