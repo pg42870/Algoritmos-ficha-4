@@ -208,3 +208,22 @@ def get_proteins(seq):
         proteins = sorted(proteins, key=len, reverse = True)
     return proteins
 
+import unittest
+
+class Testes(unittest.TestCase):
+    
+    def testar_ler_seq(self):
+        # testes 
+        pass
+    
+    def testar_ler_FASTA(self):
+        # testes2
+        pass
+    
+    def testar_complemento(self):
+        self.assertTrue(complemento_inverso('atg').isupper())
+        self.assertEqual(complemento_inverso('CAgatgattt'), 'AAATCATCTG')
+    
+if __name__ == '__main__':
+    unittest.main()
+
