@@ -9,8 +9,7 @@ import unittest
 class Testes(unittest.TestCase):
     
     def testar_ler_seq(self):
-        # testes 
-        pass
+        self.asssertEqual('BRCA.txt', 'ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGAT')
     
     def testar_ler_FASTA(self):
         # testes2
