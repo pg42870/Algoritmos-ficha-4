@@ -90,15 +90,17 @@ def transcricao(seq):
 
     Parameters
     ----------
-    seq : TYPE
-        DESCRIPTION.
+    seq : str
+        Sequência de DNA
 
     Returns
     -------
-    None.
+         Transcrição de uma sequência de DNA em RNA.
 
     """
-    pass
+    if valida(seq):
+        seq = seq.replace("T","U")
+    return seq
 
 def traducao(seq):
     """
