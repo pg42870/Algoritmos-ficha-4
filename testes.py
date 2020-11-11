@@ -21,6 +21,13 @@ class Testes(unittest.TestCase):
         self.assertTrue(complemento_inverso('atg').isupper())
         self.assertEqual(complemento_inverso('CAgatgattt'), 'AAATCATCTG')
     
+    def testar_transcrição(self):
+         self.assertTrue(validate_dna()), "Invalid DNA sequence"
+         self.assertTrue(transcrição('atg').isupper().replace("T", "U"))
+         self.assertEqual(transcrição('CAgatgattt'), 'GUCUACUAAA')
+    
+    
+    
 if __name__ == '__main__':
     unittest.main()
 
