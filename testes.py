@@ -29,6 +29,7 @@ class Testes(unittest.TestCase):
     def testar_traducão(self):
          self.assertTrue(traducao(''), 'Sequência vazia')
          self.assertTrue(traducão('atg').isupper())
+         self.assertEqual(tradução('ATG'), 'M')
          
             
     def testar_sequenciavalida(self):
