@@ -38,7 +38,8 @@ import re
 
 FH = open(filename_F,"r")
 def ler_FASTA_seq(file):
-    """Função que devolve uma sequência contida num ficheiro FASTA
+    """Função que devolve a primeira sequência contida num ficheiro FASTA
+    Se o ficheiro apresentar mais do que uma sequência, devolve apenas a primeira. 
     
     Parameters
     ----------
@@ -48,20 +49,26 @@ def ler_FASTA_seq(file):
     Returns
     -------
     seq : str 
-        Sequência contida num ficheiro FASTA sem o cabeçalho
+        Primeira sequência contida num ficheiro FASTA, sem o cabeçalho
     """
     
     linhas = FH.readlines()
+    assert linhas != [], 'Ficheiro vazio'
+    
     seq = ''
     
     a = ''.join(linhas)
-    header = re.findall('>.+[\n]',a) # para obter o cabeçalho
-    header=''.join(header)
-    
+    header = re.findall('>.+[\n]',a) # para obter a lista dos cabeçalhos
+   
     for l in linhas:
-        if l != header:
+        if l == header[0]:
+            continue
+        elif l not in header:
             seq+=l.replace('\n','')
-    return seq.upper()
+        elif l in header:
+            break
+    return seq    
+
 
 print(ler_FASTA_seq(FH))
 FH.close()
