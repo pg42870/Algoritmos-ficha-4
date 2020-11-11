@@ -32,7 +32,7 @@ def ler_seq(FileHandle):
 
 def ler_FASTA_seq(file):
     """Função que devolve a primeira sequência contida num ficheiro FASTA
-    Se o ficheiro apresentar mais do que uma sequência, devolve apenas a primeira. 
+    Se o ficheiro apresentar mais do que uma sequência, devolve apenas a primeira
     
     Parameters
     ----------
@@ -87,7 +87,7 @@ def complemento_inverso(seq):
     return seq2
 
 def transcricao(seq):
-    """Funcao que faz a transcricao de uma sequencia de DNA
+    """Função que faz a transcrição de uma sequência de DNA
 
     Parameters
     ----------
@@ -107,7 +107,7 @@ def transcricao(seq):
     return rna
 
 def traducao(seq):
-    """Funcao que faz a traducao de uma sequencia de DNA
+    """Função que faz a tradução de uma sequência de DNA
 
     Parameters
     ----------
@@ -117,7 +117,7 @@ def traducao(seq):
     Returns
     -------
     aas : str
-        Sequencia de aminoacidos resultante da traducao da sequencia de DNA
+        Sequência de aminoácidos resultante da tradução da sequência de DNA
     """
     
     if valida(seq):
@@ -177,7 +177,7 @@ def contar_bases(seq):
     Returns
     -------
     dici : dict
-         Dicionario que conta como chave as bases azotadas da sequência de DNA
+         Dicionário que conta como chave as bases azotadas da sequência de DNA
          e para cada chave apresenta o valor da contagem dessa base
     """
     
