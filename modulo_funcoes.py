@@ -11,7 +11,7 @@ Created on Fri Nov  6 16:49:28 2020
 #é ler uma linha e fazer alguma coisa com ela e ja esta
 
 filename = input('Nome do ficheiro: ')
-filenanme_F = input('Nome do ficheiro fasta: ')
+filename_F = input('Nome do ficheiro fasta: ')
 
 FileHandle = open(filename,"r")
 def ler_seq(FileHandle):
@@ -80,7 +80,7 @@ def complemento_inverso(seq):
     seq2 : str    
         complemento inverso de uma sequência de DNA (seq)
     """
-    
+    assert len(seq)!= 0,  'Sequência vazia'
     seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
     return seq2
 
