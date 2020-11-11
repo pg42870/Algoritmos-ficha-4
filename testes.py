@@ -31,7 +31,9 @@ class Testes(unittest.TestCase):
          self.assertTrue(traducão('atg').isupper())
          
             
-    def testar_validade(self):
+    def testar_sequenciavalida(self):
+        self.assertTrue(sequenciavalida(''), 'Sequência vazia')
+        self.assertTrue(seq.count('A')+seq.count('T')+seq.count('C')+seq.count('G'))
         
         
         
