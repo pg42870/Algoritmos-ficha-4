@@ -101,8 +101,9 @@ class Testes(unittest.TestCase):
         self.assertRaises(Exception, get_proteins, 'HSIDN')
         self.assertRaises(Exception, get_proteins, 'hyeod')
         self.assertRaises(Exception, get_proteins, 'ATGCTX')
-        self.assertRaises(Exception, get_proteins, 'AUGCUA')  
-        self.assertRaises(Exception, contar_bases, '15485')                        
+        self.assertRaises(Exception, get_proteins, 'AUGCUA')
+        self.assertRaises(Exception, get_proteins, 'ATGGCTCGTACGGAA')
+        self.assertRaises(Exception, contar_bases, '15485') 
         self.assertEqual(get_proteins('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA'), ['MPEIYRI_'])
         self.assertEqual(get_proteins('ATGTTGGGAGAAGTGACAGATAAGACAGTCGCTCTCTGCAGAAGAAATTAAAAGTCTGGTTCCGGATTCCAAACCAATTTCAAAGCGACCCACCAGCTCCCAGTGACAAAAGCGTTAAGATTGAGGAACGGGAAGGCATCACTGTCTATTCCATGCAGTTTGGTGGTTATGCCAAGGAAGCAGACTACGTAGCACAAGCCACCCGTCTGCGTGCTGCCCTGGAGGGCACAGCCACCTACCGGGGGGACATCTACTTCTGCACGGGTTATGACCCTCCCATGAAGCCCTACGGACGGCGCAATGAGATCTGGCTGTTGAAGACATGA', ['MQFGGYAKEADYVAQATRLRAALEGTATYRGDIYFCTGYDPPMKPYGRRNEIWLLKT_', 'MLGEVTDKTVALCRRN_', 'MPRKQTT_', 'MRSGC_', 'MTLP_']))
     
