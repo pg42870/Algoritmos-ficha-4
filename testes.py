@@ -31,6 +31,7 @@ class Testes(unittest.TestCase):
         self.assertRaises(Exception, complemento_inverso, '15485')
         self.assertTrue(complemento_inverso('atg').isupper())
         self.assertEqual(complemento_inverso('CAgatgattt'), 'AAATCATCTG')
+        self.assertEqual(complemento_inverso('ATTTAATTACAAGTCTTCAGAATGCCAGAgatat'), 'ATATCTCTGGCATTCTGAAGACTTGTAATTAAAT')
     
     def testar_transcricao(self):
         self.assertRaises(Exception, transcricao, '')
@@ -97,7 +98,7 @@ class Testes(unittest.TestCase):
         self.assertRaises(Exception, reading_frames, 'AUGCUA')
         self.assertRaises(Exception, contar_bases, '15485')
         self.assertEqual(reading_frames('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA'), ['I_LQVFRMPEIYRI_P', 'FNYKSSECQRYTGSN', 'LITSLQNARDIQDLT','WLDPVYLWHSEDL_LN','G_ILYISGILKTCN_', 'VRSCISLAF_RLVIK' ])
-        self.assertEqual(reading_frames('ATGTTGGGCATGATCAAGAACTCGCTGTTCGGAAGCGTAGAGACGTGCCTTGGCAGGTCCTA'), ['MLGMIKNSLFGSVETCLGRS', 'CWA_SRTRCSEA_RRALAGP', 'VGHDQELAVRKRRDVPWQVL', '_DLPRHVSTLPNSEFLIMPN', '_DLPRHVSTLPNSEFLIMPN', '_DLPRHVSTLPNSEFLIMPN'])                                                                  
+        self.assertEqual(reading_frames('ATGTTGGGCATGATCAAGAACTCGCTGTTCGGAAGCGTAGAGACGTGCCTTGGCAGGTCCTA'), ['MLGMIKNSLFGSVETCLGRS','CWA_SRTRCSEA_RRALAGP','VGHDQELAVRKRRDVPWQVL','_DLPRHVSTLPNSEFLIMPN','RTCQGTSLRFRTASS_SCPT','GPAKARLYASEQRVLDHAQH'])                                                                
                                                                                                                                                                               
     def testar_get_proteins(self):
         self.assertRaises(Exception, get_proteins, '')
@@ -105,17 +106,14 @@ class Testes(unittest.TestCase):
         self.assertRaises(Exception, get_proteins, 'hyeod')
         self.assertRaises(Exception, get_proteins, 'ATGCTX')
         self.assertRaises(Exception, get_proteins, 'AUGCUA')
-        self.assertRaises(Exception, get_proteins, 'ATGGCTCGTACGGAA')
+        self.assertEqual(get_proteins('ATGGCTCGTACGGAA'), [])
         self.assertRaises(Exception, contar_bases, '15485') 
         self.assertEqual(get_proteins('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA'), ['MPEIYRI_'])
-        self.assertEqual(get_proteins('ATGTTGGGAGAAGTGACAGATAAGACAGTCGCTCTCTGCAGAAGAAATTAAAAGTCTGGTTCCGGATTCCAAACCAATTTCAAAGCGACCCACCAGCTCCCAGTGACAAAAGCGTTAAGATTGAGGAACGGGAAGGCATCACTGTCTATTCCATGCAGTTTGGTGGTTATGCCAAGGAAGCAGACTACGTAGCACAAGCCACCCGTCTGCGTGCTGCCCTGGAGGGCACAGCCACCTACCGGGGGGACATCTACTTCTGCACGGGTTATGACCCTCCCATGAAGCCCTACGGACGGCGCAATGAGATCTGGCTGTTGAAGACATGA', ['MQFGGYAKEADYVAQATRLRAALEGTATYRGDIYFCTGYDPPMKPYGRRNEIWLLKT_', 'MLGEVTDKTVALCRRN_', 'MPRKQTT_', 'MRSGC_', 'MTLP_']))
-    
-
+        self.assertEqual(get_proteins('ATGTTGGGAGAAGTGACAGATAAGACAGTCGCTCTCTGCAGAAGAAATTAAAAGTCTGGTTCCGGATTCCAAACCAATTTCAAAGCGACTCTACTTCTGCACGGGTTATGACCCTCCCATGAAGCCCTACGGACGGCGCAATGAGATCTGGCTGTTGAAGACATGA'), ['MSSTARSHCAVRRASWEGHNPCRSRVALKLVWNPEPDF_','MLGEVTDKTVALCRRN_', 'MKPYGRRNEIWLLKT_', 'MRSGC_', 'MGGS_', 'MTLP_'])
+        self.assertEqual(get_proteins('ATGTTAGAGTTATTAAAAAGTCTGGTATTCGCCGTAATCATGGTACCTGTCGTGATGGCCATCATCCTGGGTCTGATTTACGGTCTTGGTGAAGTATTCAACATCTTTTCTGGTGTTGGTAAAAAAGACCAGCCCGGACAAAATCATTGA'),['MLELLKSLVFAVIMVPVVMAIILGLIYGLGEVFNIFSGVGKKDQPGQNH_','MILSGLVFFTNTRKDVEYFTKTVNQTQDDGHHDRYHDYGEYQTF_','MLNTSPRP_'] )
     
 if __name__ == '__main__':
    unittest.main()
-
-
 
 
 
