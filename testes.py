@@ -17,6 +17,7 @@ class Testes(unittest.TestCase):
         pass
     
     def testar_complemento(self):
+        self.assertTrue(complemento_inverso(''), 'Sequência vazia')
         self.assertTrue(complemento_inverso('atg').isupper())
         self.assertEqual(complemento_inverso('CAgatgattt'), 'AAATCATCTG')
     
