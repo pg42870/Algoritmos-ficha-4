@@ -4,12 +4,16 @@ Created on Fri Nov  6 16:49:28 2020
 @author: Joana Gabriel, Maria Couto, Teresa Coimbra
 """
 
+
 #raise Exception(...)
 
 #filehandle é um ficheiro que ja esta aberto nao temos de fazer open e assim
 #é ler uma linha e fazer alguma coisa com ela e ja esta
 
-FileHandle = open("demofile.txt","r")
+filename = input('Nome do ficheiro: ')
+filenanme_F = input('Nome do ficheiro fasta: ')
+
+FileHandle = open(filename,"r")
 def ler_seq(FileHandle):
     """ Funcao que devolve a 
     Parameters
@@ -32,7 +36,7 @@ FileHandle.close()
 
 import re
 
-FH = open("variola.fasta","r")
+FH = open(filename_F,"r")
 def ler_FASTA_seq(file):
     """Funcao que devolve uma sequencia contida num ficheiro FASTA
     
