@@ -56,15 +56,17 @@ class Testes(unittest.TestCase):
         self.assertRaises(reading_frames('ATGCTX'), "Sequencia de DNA invalida")
         self.assertRaises(reading_frames('AUGCUA'), "Sequencia de DNA invalida")
         self.assertEqual(reading_frames('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA', ['I_LQVFRMPEIYRI_P', 'FNYRSSECQRYTGST', 'LITSLQNARDIQDLN','WLDLVYLWHSGDL_LN','G_ILYISGILRTCN_', 'VRSCISLAF_RLVIK' ] 
-                                                                                                                                                                                       
+        self.assertEqual(reading_frames('ATGTTGGGCATGATCAAGAACTCGCTGTTCGGAAGCGTAGAGACGTGCCTTGGCAGGTCCTA'), ['MLGMIKNSLFGSVETCLGRS', 'CWA_SRTRCSEA_RRALAGP', 'VGHDQELAVRKRRDVPWQVL', '_DLPRHVSTLPNSEFLIMPN', '_DLPRHVSTLPNSEFLIMPN', '_DLPRHVSTLPNSEFLIMPN'])                                                                                                                                                                        
     def testar_get_proteins(self):
         self.assertRaises(get_proteins(''), "Sequencia de DNA invalida")
         self.assertRaises(get_proteins('HSIDN'), "Sequencia de DNA invalida")
         self.assertRaises(get_proteins('hyeod'), "Sequencia de DNA invalida")
         self.assertRaises(get_proteins('ATGCTX'), "Sequencia de DNA invalida")
         self.assertRaises(get_proteins('AUGCUA'), "Sequencia de DNA invalida")                               
-        self.assertEqual(get_proteins('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA', ['MPEIYRI_', '', '','','', '' ] 
+        self.assertEqual(get_proteins('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA', ['MPEIYRI_', '', '','','', '' ])
         com_inv = TGGTTAGATCCTGTATATCTCTGGCATTCTGAAGACTTGTAATTAAAT 
+        
+        self.assertEqual(get_proteins('ATGTTGGGAGAAGTGACAGATAAGACAGTCGCTCTCTGCAGAAGAAATTAAAAGTCTGGTTCCGGATTCCAAACCAATTTCAAAGCGACCCACCAGCTCCCAGTGACAAAAGCGTTAAGATTGAGGAACGGGAAGGCATCACTGTCTATTCCATGCAGTTTGGTGGTTATGCCAAGGAAGCAGACTACGTAGCACAAGCCACCCGTCTGCGTGCTGCCCTGGAGGGCACAGCCACCTACCGGGGGGACATCTACTTCTGCACGGGTTATGACCCTCCCATGAAGCCCTACGGACGGCGCAATGAGATCTGGCTGTTGAAGACATGA', ['MQFGGYAKEADYVAQATRLRAALEGTATYRGDIYFCTGYDPPMKPYGRRNEIWLLKT_', 'MLGEVTDKTVALCRRN_', 'MPRKQTT_', 'MRSGC_', 'MTLP_'])
     
 if __name__ == '__main__':
     unittest.main()
