@@ -5,6 +5,8 @@ Created on Tue Nov 10 19:53:45 2020
 @author: Joana Gabriel, Maria Couto, Teresa Coimbra
 """
 import unittest
+from modulo_funcoes import ler_seq, ler_FASTA_seq, complemento_inverso, transcricao, traducao, valida, contar_bases, reading_frames, get_proteins
+
 
 class Testes(unittest.TestCase):
     
@@ -46,9 +48,23 @@ class Testes(unittest.TestCase):
         self.assertEqual(contar_bases('AtGc'), {'A':1, 'T':1, 'C':1, 'G':1})
         self.assertEqual(contar_bases('AATGGCTAGT'), {'A':3, 'T':3, 'C':1, 'G':3})
         self.assertEqual(contar_bases('AATTTTAATA'), {'A':5, 'T':5, 'C':0, 'G':0})
-        
-        
-        
+    
+    def testar_reading_frames(self):
+        self.assertRaises(reading_frames(''), "Sequencia de DNA invalida")
+        self.assertRaises(reading_frames('HSIDN'), "Sequencia de DNA invalida")
+        self.assertRaises(reading_frames('hyeod'), "Sequencia de DNA invalida")
+        self.assertRaises(reading_frames('ATGCTX'), "Sequencia de DNA invalida")
+        self.assertRaises(reading_frames('AUGCUA'), "Sequencia de DNA invalida")
+        self.assertEqual(reading_frames('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA', ['I_LQVFRMPEIYRI_P', 'FNYRSSECQRYTGST', 'LITSLQNARDIQDLN','WLDLVYLWHSGDL_LN','G_ILYISGILRTCN_', 'VRSCISLAF_RLVIK' ] 
+                                                                                                                                                                                       
+    def testar_get_proteins(self):
+        self.assertRaises(get_proteins(''), "Sequencia de DNA invalida")
+        self.assertRaises(get_proteins('HSIDN'), "Sequencia de DNA invalida")
+        self.assertRaises(get_proteins('hyeod'), "Sequencia de DNA invalida")
+        self.assertRaises(get_proteins('ATGCTX'), "Sequencia de DNA invalida")
+        self.assertRaises(get_proteins('AUGCUA'), "Sequencia de DNA invalida")                               
+        self.assertEqual(get_proteins('ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATCTAACCA', ['MPEIYRI_', '', '','','', '' ] 
+        com_inv = TGGTTAGATCCTGTATATCTCTGGCATTCTGAAGACTTGTAATTAAAT 
     
 if __name__ == '__main__':
     unittest.main()
