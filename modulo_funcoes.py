@@ -26,8 +26,8 @@ def ler_seq(FileHandle):
     
     seq : str
         Sequência de DNA que está contida numa linha   
-
     """
+    
     seq = FileHandle.readline()
     return seq.upper()
 
@@ -80,6 +80,7 @@ def complemento_inverso(seq):
     seq2 : str    
         Complemento inverso de uma sequência de DNA (seq)
     """
+    
     assert len(seq)!= 0,  'Sequência vazia'
     assert valida(seq), "Sequencia de DNA invalida"
     seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
@@ -97,8 +98,8 @@ def transcricao(seq):
     -------
     rna : str
         Transcrição de uma sequência de DNA em RNA
-
     """
+    
     assert valida(seq), "Sequencia de DNA invalida"
     rna = seq.upper().replace("T","U")
     return rna
@@ -115,8 +116,8 @@ def traducao(seq):
     -------
     aas : str
         Sequencia de aminoacidos resultante da traducao da sequencia de DNA
-
     """
+    
     seq = seq.upper()
     codoes = re.findall('...',seq)
     aas = ''
