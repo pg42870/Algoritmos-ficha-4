@@ -19,7 +19,7 @@ class Testes(unittest.TestCase):
         self.assertTrue(complemento_inverso('atg').isupper())
         self.assertEqual(complemento_inverso('CAgatgattt'), 'AAATCATCTG')
     
-    def testar_transcricão(self):
+    def testar_transcricao(self):
          self.assertTrue(transcricao(''), 'Sequência vazia')
          self.assertTrue(transcricao('atg').isupper().replace('T', 'U'))
          self.assertEqual(transcricao('CAgatgattt'), 'GUCUACUAAA')
