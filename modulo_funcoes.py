@@ -81,8 +81,8 @@ def complemento_inverso(seq):
         Complemento inverso de uma sequência de DNA (seq)
     """
     assert len(seq)!= 0,  'Sequência vazia'
-    if valida(seq):
-        seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
+    assert valida(seq), "Sequencia de DNA invalida"
+    seq2 = seq[::-1].lower().replace('a','T').replace('c','G').replace('g','C').replace('t','A')
     return seq2
 
 def transcricao(seq):
@@ -98,8 +98,8 @@ def transcricao(seq):
          Transcrição de uma sequência de DNA em RNA
 
     """
-    if valida(seq):
-        seq = seq.replace("T","U")
+    assert valida(seq), "Sequencia de DNA invalida"
+    seq = seq.replace("T","U")
     return seq
 
 def traducao(seq):
