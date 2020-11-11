@@ -26,7 +26,15 @@ class Testes(unittest.TestCase):
          self.assertEqual(transcricao('CAgatgattt'), 'GUCUACUAAA')
          self.assertEqual(transcricao('ATG'), 'AUG')
     
-    
+    def testar_traducão(self):
+         self.assertTrue(traducao(''), 'Sequência vazia')
+         self.assertTrue(traducão('atg').isupper())
+         
+            
+    def testar_validade(self):
+        
+        
+        
     
 if __name__ == '__main__':
     unittest.main()
