@@ -35,6 +35,18 @@ class Testes(unittest.TestCase):
         self.assertTrue(sequenciavalida(''), 'Sequência vazia')
         self.assertTrue(seq.count('A')+seq.count('T')+seq.count('C')+seq.count('G'))
         
+    def testar_contar_bases(self):
+        self.assertRaises(contar_bases(''), "Sequencia de DNA invalida")
+        self.assertRaises(contar_bases('HSIDN'), "Sequencia de DNA invalida")
+        self.assertRaises(contar_bases('hyeod'), "Sequencia de DNA invalida")
+        self.assertRaises(contar_bases('ATGCTX'), "Sequencia de DNA invalida")
+        self.assertRaises(contar_bases('AUGCUA'), "Sequencia de DNA invalida")
+        self.assertEqual(contar_bases('ATGC'), {'A':1, 'T':1, 'C':1, 'G':1})
+        self.assertEqual(contar_bases('atgc'), {'A':1, 'T':1, 'C':1, 'G':1})
+        self.assertEqual(contar_bases('AtGc'), {'A':1, 'T':1, 'C':1, 'G':1})
+        self.assertEqual(contar_bases('AATGGCTAGT'), {'A':3, 'T':3, 'C':1, 'G':3})
+        self.assertEqual(contar_bases('AATTTTAATA'), {'A':5, 'T':5, 'C':0, 'G':0})
+        
         
         
     
