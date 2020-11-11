@@ -19,13 +19,13 @@ def ler_seq(FileHandle):
     Parameters
     ----------
     FileHandle : _io.TextIOWrapper
-        Um ficheiro .txt aberto que contem uma sequencia de DNA por linha
+        Um ficheiro .txt aberto que contém uma sequência de DNA por linha
 
     Returns
     -------
     
     seq : str
-        sequencia de DNA que esta contida numa linha   
+        Sequência de DNA que está contida numa linha   
 
     """
     seq = FileHandle.readline()
@@ -38,7 +38,7 @@ import re
 
 FH = open(filename_F,"r")
 def ler_FASTA_seq(file):
-    """Funcao que devolve uma sequencia contida num ficheiro FASTA
+    """Função que devolve uma sequência contida num ficheiro FASTA
     
     Parameters
     ----------
@@ -67,18 +67,18 @@ print(ler_FASTA_seq(FH))
 FH.close()
 
 def complemento_inverso(seq):
-    """ Funcao que devolve o complemento inverso de uma sequencia de DNA
+    """ Função que devolve o complemento inverso de uma sequência de DNA
     fornecida
 
     Parameters
     ----------
     seq : str
-        sequência de DNA
+        Sequência de DNA
 
     Returns
     -------
     seq2 : str    
-        complemento inverso de uma sequência de DNA (seq)
+        Complemento inverso de uma sequência de DNA (seq)
     """
     assert len(seq)!= 0,  'Sequência vazia'
     if valida(seq):
@@ -95,7 +95,7 @@ def transcricao(seq):
 
     Returns
     -------
-         Transcrição de uma sequência de DNA em RNA.
+         Transcrição de uma sequência de DNA em RNA
 
     """
     if valida(seq):
@@ -108,11 +108,11 @@ def traducao(seq):
     Parameters
     ----------
     seq : str
-        sequência de DNA
+        Sequência de DNA
 
     Returns
     -------
-        Tradução de uma sequência de DNA.
+        Tradução de uma sequência de DNA
 
     """
     seq = seq.upper()
@@ -139,12 +139,12 @@ def traducao(seq):
     return(aas)
 
 def valida(seq):
-    """ Funcao que verifica se a sequencia de DNA e valida (devolve True or False)
+    """ Função que verifica se a sequência de DNA é válida (devolve True or False)
     
     Parameters
     ----------
     seq : str
-        Sequência de DNA que queremos saber se e valida
+        Sequência de DNA que queremos saber se é vélida
         
     Returns
     -------
@@ -159,17 +159,17 @@ def valida(seq):
         return False
 
 def contar_bases(seq):
-    """Funcao que recebe uma sequencia de DNA e faz a contagem das suas bases
+    """Função que recebe uma sequência de DNA e faz a contagem das suas bases
 
     Parameters
     ----------
     seq : str
-        Sequencia de DNA da qual queremos contar as bases
+        Sequência de DNA da qual queremos contar as bases
 
     Returns
     -------
     dici : dict
-         Dicionario que conta como chave as bases azotadas da sequencia de DNA
+         Dicionario que conta como chave as bases azotadas da sequência de DNA
          e para cada chave apresenta o valor da contagem dessa base
     """
     
@@ -183,13 +183,13 @@ def contar_bases(seq):
     return dici
 
 def reading_frames(seq):
-    """Funcao que devolve uma lista com as 3 reading frames da sequencia
+    """Função que devolve uma lista com as 3 reading frames da sequência
     de DNA fornecida, bem como as 3 do seu complemento inverso
 
     Parameters
     ----------
     seq : str
-        Sequencia de DNA da qual queremos saber as reading frames
+        Sequência de DNA da qual queremos saber as reading frames
 
     Returns
     -------
@@ -208,19 +208,19 @@ def reading_frames(seq):
 
 
 def get_proteins(seq):
-    """Funcao que devolve a lista ordenada das proteinas resultantes da traducao 
-    da sequencia de DNA fornecida
+    """Função que devolve a lista ordenada das proteinas resultantes da traducao 
+    da sequência de DNA fornecida
     
     Parameters
     ----------
     seq : str
-        Sequencia de DNA da qual queremos saber as proteinas resultantes
+        Sequência de DNA da qual queremos saber as proteinas resultantes
 
     Returns
     -------
     proteins: list of str
-        Proteinas resultantes da traducao da sequencia de DNA, ordenadas por 
-        tamanho e dentro do mesmo tamanho por ordem alfabetica
+        Proteinas resultantes da traduçãoo da sequência de DNA, ordenadas por 
+        tamanho e dentro do mesmo tamanho por ordem alfabética
     """
     
     assert valida(seq), "Sequencia de DNA invalida"
