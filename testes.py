@@ -12,7 +12,6 @@ class Testes(unittest.TestCase):
         self.asssertEqual('BRCA.txt', 'ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGAT')
     
     def testar_ler_FASTA(self):
-        self.assertEqual(ler_FASTA_seq('empty.fasta'), 'Ficheiro vazio')
         self.assertEqual(ler_FASTA_seq('Homo_sapiens_BRCA.fasta'),'ATTTAATTACAAGTCTTCAGAATGCCAGAGATATACAGGATATGCGAATTAAGAAGAAACAAAGGCAACGCGTCTTTCCACAGCCAGGCAGTCTGTATCTTGCAAAAACATCCACTCTGCCTCGAATCTCTCTGAAAGCAGCAGTAGGAGGCCAAGTTCCCTCTGCGTGTTCTCATAAACAG')
     
     def testar_complemento(self):
