@@ -172,13 +172,14 @@ def contar_bases(seq):
          Dicionario que contem como chave as bases azotadas da sequencia de DNA
          e para cada chave apresenta o valor da contagem dessa base
     """
-    if valida(seq):
-        seq= seq.upper()
-        dici = {}
-        dici['A'] = seq.count('A')
-        dici['C'] = seq.count('C')
-        dici['G'] = seq.count('G')
-        dici['T'] = seq.count('T')
+    
+    assert valida(seq), "Sequencia de DNA invalida"
+    seq= seq.upper()
+    dici = {}
+    dici['A'] = seq.count('A')
+    dici['C'] = seq.count('C')
+    dici['G'] = seq.count('G')
+    dici['T'] = seq.count('T')
     return dici
 
 def reading_frames(seq):
@@ -197,12 +198,12 @@ def reading_frames(seq):
         do seu complemento inverso
     """
     
-    if valida(seq):
-       frames = []
-       for i in range(3):
-           frames.append(seq[i::])
-       for i in range(3):
-           frames.append(complemento_inverso(seq[i::]))
+    assert valida(seq), "Sequencia de DNA invalida"
+    frames = []
+    for i in range(3):
+        frames.append(traducao(seq[i::]))
+    for i in range(3):
+        frames.append(traducao(complemento_inverso(seq[i::])))
     return frames
 
 
@@ -222,16 +223,14 @@ def get_proteins(seq):
         tamanho e dentro do mesmo tamanho por ordem alfabetica
     """
     
-    if valida(seq):
-        frames = reading_frames(seq)
-        proteins = []
-        for f in frames:
-            p = traducao(f)
-            p = re.findall('M.*?_',p)
-            for i in p:
-                proteins.append(i)
-        proteins = set(proteins)
-        proteins = list(proteins)
-        proteins.sort()
-        proteins = sorted(proteins, key=len, reverse = True)
+    assert valida(seq), "Sequencia de DNA invalida"
+    frames = reading_frames(seq)
+    proteins = []
+    for f in frames:
+        p = re.findall('M.*?_',f)
+        for i in p:
+            proteins.append(i)
+    proteins = list(set(proteins))
+    proteins.sort()
+    proteins = sorted(proteins, key=len, reverse = True)
     return proteins
