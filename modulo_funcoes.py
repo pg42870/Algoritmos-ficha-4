@@ -3,19 +3,14 @@ Created on Fri Nov  6 16:49:28 2020
 
 @author: Joana Gabriel, Maria Couto, Teresa Coimbra
 """
+
+import re
+#Constantes - Mensagem de erro
 seq_inv = "Sequencia de DNA invalida"
+fich_vaz = "Ficheiro vazio"
 
-#raise Exception(...)
-
-#filehandle é um ficheiro que ja esta aberto nao temos de fazer open e assim
-#é ler uma linha e fazer alguma coisa com ela e ja esta
-
-filename = input('Nome do ficheiro: ')
-filename_F = input('Nome do ficheiro fasta: ')
-
-FileHandle = open(filename,"r")
 def ler_seq(FileHandle):
-    """ Funcao que devolve a 
+    """ Funcao que devolve a sequencia contida numa linha do ficheiro
     Parameters
     ----------
     FileHandle : _io.TextIOWrapper
@@ -29,14 +24,12 @@ def ler_seq(FileHandle):
     """
     
     seq = FileHandle.readline()
-    return seq.upper()
+    assert seq != '', fich_vaz
+    seq= seq.upper()
+    return seq
 
-print(ler_seq(FileHandle))
-FileHandle.close()
 
-import re
 
-FH = open(filename_F,"r")
 def ler_FASTA_seq(file):
     """Função que devolve a primeira sequência contida num ficheiro FASTA
     Se o ficheiro apresentar mais do que uma sequência, devolve apenas a primeira. 
@@ -52,8 +45,8 @@ def ler_FASTA_seq(file):
         Primeira sequência contida num ficheiro FASTA, sem o cabeçalho
     """
     
-    linhas = FH.readlines()
-    assert linhas != [], 'Ficheiro vazio'
+    linhas = file.readlines()
+    assert linhas != [], fich_vaz
     
     seq = ''
     
@@ -70,8 +63,7 @@ def ler_FASTA_seq(file):
     return seq    
 
 
-print(ler_FASTA_seq(FH))
-FH.close()
+
 
 def complemento_inverso(seq):
     """ Função que devolve o complemento inverso de uma sequência de DNA
@@ -220,8 +212,9 @@ def reading_frames(seq):
         frames = []
         for i in range(3):
             frames.append(traducao(seq[i::]))
+        com_inv = complemento_inverso(seq)
         for i in range(3):
-            frames.append(traducao(complemento_inverso(seq[i::])))
+            frames.append(traducao(com_inv[i::]))
     else:
         raise Exception(seq_inv)
     return frames
