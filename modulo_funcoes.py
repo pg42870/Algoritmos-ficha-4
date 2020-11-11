@@ -29,7 +29,7 @@ def ler_seq(FileHandle):
 
     """
     seq = FileHandle.readline()
-    return seq
+    return seq.upper()
 
 print(ler_seq(FileHandle))
 FileHandle.close()
@@ -61,7 +61,7 @@ def ler_FASTA_seq(file):
     for l in linhas:
         if l != header:
             seq+=l.replace('\n','')
-    return seq
+    return seq.upper()
 
 print(ler_FASTA_seq(FH))
 FH.close()
@@ -86,7 +86,7 @@ def complemento_inverso(seq):
     return seq2
 
 def transcricao(seq):
-    """
+    """Funcao que faz a transcricao de uma sequencia de DNA
 
     Parameters
     ----------
@@ -95,15 +95,16 @@ def transcricao(seq):
 
     Returns
     -------
-         Transcrição de uma sequência de DNA em RNA
+    rna : str
+        Transcrição de uma sequência de DNA em RNA
 
     """
     assert valida(seq), "Sequencia de DNA invalida"
-    seq = seq.replace("T","U")
-    return seq
+    rna = seq.upper().replace("T","U")
+    return rna
 
 def traducao(seq):
-    """
+    """Funcao que faz a traducao de uma sequencia de DNA
 
     Parameters
     ----------
@@ -112,7 +113,8 @@ def traducao(seq):
 
     Returns
     -------
-        Tradução de uma sequência de DNA
+    aas : str
+        Sequencia de aminoacidos resultante da traducao da sequencia de DNA
 
     """
     seq = seq.upper()
