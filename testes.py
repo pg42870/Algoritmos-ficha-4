@@ -22,9 +22,10 @@ class Testes(unittest.TestCase):
         self.assertEqual(complemento_inverso('CAgatgattt'), 'AAATCATCTG')
     
     def testar_transcricão(self):
-         self.assertTrue(transcricão(''), 'Sequência vazia')
-         self.assertTrue(transcricão('atg').isupper().replace('T', 'U'))
-         self.assertEqual(transcricão('CAgatgattt'), 'GUCUACUAAA')
+         self.assertTrue(transcricao(''), 'Sequência vazia')
+         self.assertTrue(transcricao('atg').isupper().replace('T', 'U'))
+         self.assertEqual(transcricao('CAgatgattt'), 'GUCUACUAAA')
+         self.assertEqual(transcricao('ATG'), 'AUG')
     
     
     
