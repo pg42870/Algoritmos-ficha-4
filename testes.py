@@ -79,16 +79,21 @@ class Testes(unittest.TestCase):
  
     def testar_contar_bases(self):
         self.assertRaises(Exception, contar_bases, '')
-        self.assertRaises(Exception, contar_bases, 'HSIDN')
-        self.assertRaises(Exception, contar_bases, 'hyeod')
-        self.assertRaises(Exception, contar_bases, 'ATGCTX')
-        self.assertRaises(Exception, contar_bases, 'AUGCUA')
+        self.assertRaises(Exception, contar_bases, 'HS8ID4N')
+        self.assertRaises(Exception, contar_bases, 'hy7eod96')
+        self.assertRaises(Exception, contar_bases, 'ATGCT5')
+        self.assertRaises(Exception, contar_bases, 'AUGC8UA')
         self.assertRaises(Exception, contar_bases, '15485')
         self.assertEqual(contar_bases('ATGC'), {'A':1, 'T':1, 'C':1, 'G':1})
         self.assertEqual(contar_bases('atgc'), {'A':1, 'T':1, 'C':1, 'G':1})
         self.assertEqual(contar_bases('AtGc'), {'A':1, 'T':1, 'C':1, 'G':1})
         self.assertEqual(contar_bases('AATGGCTAGT'), {'A':3, 'T':3, 'C':1, 'G':3})
         self.assertEqual(contar_bases('AATTTTAATA'), {'A':5, 'T':5, 'C':0, 'G':0})
+        self.assertEqual(contar_bases('AAUUUUAAUA'), {'A':5, 'U':5, 'C':0, 'G':0})
+        self.assertEqual(contar_bases('augc'), {'A':1, 'U':1, 'C':1, 'G':1})
+        self.assertEqual(contar_bases('AuGc'), {'A':1, 'U':1, 'C':1, 'G':1})
+        self.assertEqual(contar_bases('HSIDN'), {'H':1, 'S':1, 'I':1, 'D':1, 'N':1})
+        self.assertEqual(contar_bases('hsidn'), {'H':1, 'S':1, 'I':1, 'D':1, 'N':1})
     
     def testar_reading_frames(self):
         self.assertRaises(Exception, reading_frames, '')
