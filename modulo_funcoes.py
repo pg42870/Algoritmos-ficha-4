@@ -167,27 +167,28 @@ def valida(seq):
         return False
 
 def contar_bases(seq):
-    """Função que recebe uma sequência de DNA e faz a contagem das suas bases
+    """Função que recebe uma sequência de DNA, RNA ou aminoacidos e faz
+    a contagem das suas bases
 
     Parameters
     ----------
     seq : str
-        Sequência de DNA da qual queremos contar as bases
+        Sequência de DNA, RNA ou aminoacidos da qual queremos contar as bases
 
     Returns
     -------
     dici : dict[str,int]
-         Dicionário que conta como chave as bases azotadas da sequência de DNA
+         Dicionário que conta como chave as bases da sequência
          e para cada chave apresenta o valor da contagem dessa base
     """
     
-    if valida(seq):
+    if seq.isalpha():
         seq= seq.upper()
         dici = {}
-        dici['A'] = seq.count('A')
-        dici['C'] = seq.count('C')
-        dici['G'] = seq.count('G')
-        dici['T'] = seq.count('T')
+        for letra in seq:
+            if letra not in dici:
+                dici[letra] = 0
+            dici[letra] += 1
     else:
         raise Exception(seq_inv)
     return dici
