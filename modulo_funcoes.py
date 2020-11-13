@@ -176,7 +176,7 @@ def contar_bases(seq):
 
     Returns
     -------
-    dici : dict
+    dici : dict[str,int]
          Dicionário que conta como chave as bases azotadas da sequência de DNA
          e para cada chave apresenta o valor da contagem dessa base
     """
